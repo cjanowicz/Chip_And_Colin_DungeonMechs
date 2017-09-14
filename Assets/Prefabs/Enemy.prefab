@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1486642456071208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.08, y: -0.12, z: 0}
+  m_LocalPosition: {x: 2.08, y: -1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,8 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolDirection: {x: 0, y: 0}
+  patrolDuration: 4
+  stunDuration: 2
   speed: 10
   health: 3
+  explosion: {fileID: 1270491723050864, guid: a42bfce435205fc47be4defa6b1cca48, type: 2}
 --- !u!212 &212662831656049990
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,13 +7,19 @@ public class EnemyScript : MonoBehaviour {
     /// <summary>
     /// Code for enemy type that moves until it hits a wall in a direction specified.
     /// </summary>
-
+    enum PatrolState { Patrol, Paused };
+    PatrolState currentState = PatrolState.Patrol;
     public Vector2 patrolDirection;
+    private Vector2 currentDirection;
+    public float patrolDuration = 4;
     private float currentTimer = 0f;
-    public const float stunTime = 2;
+    public float stunDuration = 2;
+    private float stunTimer = 0f;
     public float speed;
     public int health;
     Rigidbody2D myRigidbody2D;
+    public GameObject explosion;
+    
 
     // Use this for initialization
     void Start () {
@@ -23,19 +29,48 @@ public class EnemyScript : MonoBehaviour {
             patrolDirection.Normalize();
 
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        currentTimer = patrolDuration;
+        currentDirection = patrolDirection;
 
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
-        myRigidbody2D.AddForce(patrolDirection * speed);
+        myRigidbody2D.AddForce(currentDirection * speed);
         ////Turn the other way detection here.
+
+        ////Note: Look into state machine behavior 
+        if (stunTimer >= 0) {
+            stunTimer -= Time.deltaTime;
+        } else {
+            currentTimer -= Time.deltaTime;
+            if (currentTimer <= 0f) {
+                if(currentState == PatrolState.Patrol) {
+                    Debug.Log("Paused Start");
+                    currentDirection = Vector2.zero;
+                    currentState = PatrolState.Paused;
+                    patrolDirection *= -1;
+                    currentTimer = stunDuration;
+                } else if( currentState == PatrolState.Paused) {
+                    Debug.Log("Patrol Start");
+                    currentState = PatrolState.Patrol;
+                    currentDirection = patrolDirection;
+                    currentTimer = patrolDuration;
+                }
+            }
+        }
+
+    }
+
+    public void Stun() {
+
     }
 
     public void TakeDamage(int damage) {
 
         Debug.Log("TakeDamage Message Received");
+        ///Call Stun Function
         health -= damage;
         if(health <= 0) {
             Die();
@@ -44,6 +79,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Die() {
         //Call Explosion here
+        Instantiate(explosion, transform.position, Quaternion.identity);
         this.gameObject.SetActive(false);
     }
 }
