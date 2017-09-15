@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolDirection: {x: 0, y: 0}
-  patrolDuration: 4
-  stunDuration: 2
+  patrolDuration: 3
+  stunDuration: 1
   speed: 10
   health: 3
   explosion: {fileID: 1270491723050864, guid: a42bfce435205fc47be4defa6b1cca48, type: 2}

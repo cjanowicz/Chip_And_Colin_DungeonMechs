@@ -19,6 +19,7 @@ public class EnemyScript : MonoBehaviour {
     public int health;
     Rigidbody2D myRigidbody2D;
     public GameObject explosion;
+    private Vector2 origin;
     
 
     // Use this for initialization
@@ -37,13 +38,13 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        myRigidbody2D.AddForce(currentDirection * speed);
         ////Turn the other way detection here.
 
         ////Note: Look into state machine behavior 
         if (stunTimer >= 0) {
             stunTimer -= Time.deltaTime;
         } else {
+            myRigidbody2D.AddForce(currentDirection * speed);
             currentTimer -= Time.deltaTime;
             if (currentTimer <= 0f) {
                 if(currentState == PatrolState.Patrol) {
@@ -64,6 +65,7 @@ public class EnemyScript : MonoBehaviour {
     }
 
     public void Stun() {
+        stunTimer = stunDuration;
 
     }
 
@@ -71,6 +73,8 @@ public class EnemyScript : MonoBehaviour {
 
         Debug.Log("TakeDamage Message Received");
         ///Call Stun Function
+        Stun();
+        origin = transform.position;
         health -= damage;
         if(health <= 0) {
             Die();
