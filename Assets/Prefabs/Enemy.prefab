@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50050657461689634}
   - component: {fileID: 61593945403525590}
   - component: {fileID: 114648341569492350}
+  - component: {fileID: 95247608295587916}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -71,7 +72,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1486642456071208}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8be6341e1ce3f4cec9902bc34f72d20a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -88,6 +89,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.25}
   m_EdgeRadius: 0
+--- !u!95 &95247608295587916
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486642456071208}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 269cacf3087d61b488afcf7cbe252b46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114648341569492350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,10 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolDirection: {x: 0, y: 0}
   patrolDuration: 3
-  stunDuration: 1
+  stunDuration: 2
   speed: 10
   health: 3
   explosion: {fileID: 1270491723050864, guid: a42bfce435205fc47be4defa6b1cca48, type: 2}
+  dragWhenStunned: 0.5
 --- !u!212 &212662831656049990
 SpriteRenderer:
   m_ObjectHideFlags: 1

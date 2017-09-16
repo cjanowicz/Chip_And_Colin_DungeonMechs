@@ -7,7 +7,7 @@ public class EnemyScript : MonoBehaviour {
     /// <summary>
     /// Code for enemy type that moves until it hits a wall in a direction specified.
     /// </summary>
-    enum PatrolState { Patrol, Paused };
+    enum PatrolState { Patrol, Paused, Returning };
     PatrolState currentState = PatrolState.Patrol;
     public Vector2 patrolDirection;
     private Vector2 currentDirection;
@@ -20,7 +20,9 @@ public class EnemyScript : MonoBehaviour {
     Rigidbody2D myRigidbody2D;
     public GameObject explosion;
     private Vector2 origin;
-    
+    private float dragDefault;
+    public float dragWhenStunned = 1f;
+    private Animator myAnim;
 
     // Use this for initialization
     void Start () {
@@ -32,7 +34,8 @@ public class EnemyScript : MonoBehaviour {
         myRigidbody2D = GetComponent<Rigidbody2D>();
         currentTimer = patrolDuration;
         currentDirection = patrolDirection;
-
+        dragDefault = myRigidbody2D.drag;
+        myAnim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -43,6 +46,9 @@ public class EnemyScript : MonoBehaviour {
         ////Note: Look into state machine behavior 
         if (stunTimer >= 0) {
             stunTimer -= Time.deltaTime;
+            if(stunTimer <= 0) {
+                UndoStun();
+            }
         } else {
             myRigidbody2D.AddForce(currentDirection * speed);
             currentTimer -= Time.deltaTime;
@@ -66,13 +72,17 @@ public class EnemyScript : MonoBehaviour {
 
     public void Stun() {
         stunTimer = stunDuration;
-
+        myRigidbody2D.drag = dragWhenStunned;
+        myAnim.SetBool("StunnedBool", true);
+    }
+    public void UndoStun() {
+        myRigidbody2D.drag = dragDefault;
+        myAnim.SetBool("StunnedBool", false);
     }
 
     public void TakeDamage(int damage) {
 
         Debug.Log("TakeDamage Message Received");
-        ///Call Stun Function
         Stun();
         origin = transform.position;
         health -= damage;

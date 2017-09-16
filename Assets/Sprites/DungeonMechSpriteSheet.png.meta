@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 65ec2db780ac30d4b9e3a2d5212a0b13
-timeCreated: 1504738225
+timeCreated: 1505526329
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -17,6 +17,9 @@ TextureImporter:
     21300020: DungeonMechSpriteSheet_10
     21300022: DungeonMechSpriteSheet_11
     21300024: DungeonMechSpriteSheet_12
+    21300026: DungeonMechSpriteSheet_13
+    21300028: DungeonMechSpriteSheet_14
+    21300030: DungeonMechSpriteSheet_15
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -269,6 +272,48 @@ TextureImporter:
         serializedVersion: 2
         x: 128
         y: 719
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DungeonMechSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 591
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DungeonMechSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 591
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DungeonMechSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 591
         width: 128
         height: 128
       alignment: 0
