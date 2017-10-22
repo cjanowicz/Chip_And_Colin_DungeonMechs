@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: AudioPanelOverride
+  m_Controller: {fileID: 9100000, guid: 966beea673f9b4740a87e78810be101e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f4859dc3a67875f49a296b02ddbe55d5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5a0bf39ac1b0f9d4db0d0e45da45115c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0b92abde3d4043f45b8ef7f47f9315d9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e6c3be4b28ac54148a8073c9422af651, type: 2}
